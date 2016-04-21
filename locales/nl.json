@@ -1,0 +1,20 @@
+{
+    "pairing": {
+        "authorized_error": "Er is een probleem opgetreden tijdens het inloggen.\nProbeer het later nog eens.",
+        "pin_error": "Er is een verkeerde PIN code ingevuld.\nLog nog een keer in en gebruik de nieuwe PIN code"
+    },
+    "talkback": {
+        "not_connected_yet": "Je bent nog niet ingelogd op Twitter. Ga naar instellingen en log in.",
+        "user": "gebruiker",
+        "tweets": "schrijft",
+        "tweet_post_canceled": "Ok. Ik zal niks op je tijdlijn plaatsen.",
+        "tweet_post_succeeded": "Klaar. De tweet is verstuurd naar je tijdlijn."
+    },
+    "question": {
+        "tweet_content": "Wat wil je plaatsen?",
+        "tweet_post_confirm": "Wil je dat ik de volgende tweet op je tijdlijn plaats?"
+    },
+    "error": {
+        "general": "Oeps. Er is iets fout gegaan."
+    }
+}

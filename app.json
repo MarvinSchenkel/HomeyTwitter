@@ -1,0 +1,102 @@
+{
+    "id": "nl.marvinschenkel.twitter",
+    "name": {
+        "en": "Twitter for Homey",
+        "nl": "Twitter voor Homey"
+    },
+    "description": {
+        "en": "Twitter support for Homey",
+        "nl": "Twitter support voor Homey"  
+    },
+    "images":{
+        "large":"./assets/images/large.jpg",
+        "small":"./assets/images/small.jpg"
+    },
+    "version": "0.0.1",
+    "compatibility": "0.x || 1.x",
+    "category": [
+        "internet"
+    ],
+    "author": {
+        "name": "Marvin Schenkel",
+        "email": "marvinschenkel@gmail.com",
+        "website": "https://linkedin.com/in/marvinschenkel"
+    },
+    "permissions": [
+        "homey:manager:speech-output",
+        "homey:manager:speech-input"
+    ],
+    "speech": [
+        {
+            "id": "get_latest_tweets",
+            "importance": 1,
+            "triggers": {
+                "en": ["latest tweets", "latest tweet"],
+                "nl": ["laatste tweets", "laatste tweet"]
+            }
+        },
+        {
+            "id": "post_tweet",
+            "importance": 1,
+            "triggers": {
+                "en": ["post a tweet", "write a tweet", "send a tweet"],
+                "nl": ["tweet schrijven", "tweet posten", "tweet versturen", "tweet plaatsen"]
+            }
+        }
+    ],
+    "flow" : {
+        "actions" : [
+            {
+                "id": "post_tweet",
+                "title": {
+                    "en" : "Post a tweet on your timeline.",
+                    "nl":"Post een tweet op je timeline."
+                },
+                "fluidArgs": true,
+                "args":[               
+                    {
+                        "name": "tweet",
+                        "type": "text",
+                        "placeholder" : {
+                            "en" : "The tweet to post",
+                            "nl": "De tweet om te posten"
+                        }
+                    }
+                ]
+            }
+        ],
+        "triggers": [
+            {
+                "id":"on_user_mention",
+                "title": {
+                "en":"You have been mentioned!",          
+                "nl":"Je bent genoemd!"
+                },
+                "tokens":[
+                {
+                    "name":"tweet",
+                    "title": {
+                    "en":"Tweet",
+                    "nl":"Tweet"
+                    },
+                    "example":{
+                    "en":"@MarvinSchenkel knows how to build a Twitter app ;-)",
+                    "nl":"@MarvinSchenkel knows how to build a Twitter app ;-)"
+                    }
+                },
+                {
+                    "name":"sender",
+                    "title": {
+                    "en":"Sender",
+                    "nl":"Afzender"
+                    },
+                    "example":{
+                        "en":"@MarvinSchenkel",
+                        "nl":"@MarvinSchenkel"
+                    }
+            }
+        ]
+      }
+        ]
+    }
+}

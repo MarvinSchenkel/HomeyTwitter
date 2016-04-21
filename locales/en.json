@@ -1,0 +1,20 @@
+{
+    "pairing": {
+        "authorized_error": "There was a problem authorizing with Twitter.\nPlease try again later.",
+        "pin_error": "The PIN was incorrect.\nPlease login again and use a new PIN."
+    },
+    "talkback": {
+        "not_connected_yet": "You're not connected to Twitter yet. Please go to settings and login with your account.",
+        "user": "user",
+        "tweets": "tweets",
+        "tweet_post_canceled": "Alright. I won't post anything to your timeline.",
+        "tweet_post_succeeded": "Done. The tweet was posted to your timeline."
+    },
+    "question": {
+        "tweet_content": "What do you want to tweet?",
+        "tweet_post_confirm": "Do you want me to post the following tweet to your timeline?"
+    },
+    "error": {
+        "general": "Oops. Something went wrong."
+    }
+}
