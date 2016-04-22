@@ -63,7 +63,7 @@ function initTwitter () {
   // Triggers (use stream to twitter)
   // -- User mentions
   userMentionStream.stream({
-    track: '@' + settings.username
+    track: settings.username
   })
 
   // Listen stream data
@@ -71,8 +71,18 @@ function initTwitter () {
     console.log('Got a stream message:')
     if (tweet.text && tweet.user.name) {
       console.log(tweet.text, 'by', tweet.user.name, '(', tweet.user.screen_name, ')')
-      // Exclude own tweets
-      if (tweet.user.screen_name !== settings.username) {
+      // Check if the user was really mentioned
+      var userMentioned = false
+
+      if (tweet.entities.user_mentions) {
+        tweet.entities.user_mentions.forEach(function (user) {
+          if (user.screen_name === settings.username) {
+            userMentioned = true
+          }
+        })
+      }
+
+      if (userMentioned) {
         Homey.manager('flow').trigger('on_user_mention', {
           tweet: tweet.text,
           sender: tweet.user.name

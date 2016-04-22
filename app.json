@@ -1,8 +1,8 @@
 {
     "id": "nl.marvinschenkel.twitter",
     "name": {
-        "en": "Twitter for Homey",
-        "nl": "Twitter voor Homey"
+        "en": "Twitter",
+        "nl": "Twitter"
     },
     "description": {
         "en": "Twitter support for Homey",
@@ -12,7 +12,7 @@
         "large":"./assets/images/large.jpg",
         "small":"./assets/images/small.jpg"
     },
-    "version": "0.0.1",
+    "version": "0.0.2",
     "compatibility": "0.x || 1.x",
     "category": [
         "internet"
