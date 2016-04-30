@@ -17,7 +17,9 @@ NL:
 
 ### Flow support
 *Triggers*
-* On user mention
+* On user mention (when someone mentions you in a tweet)
+* On timeline tweet (when someone you follow posts a tweet)
+* On own tweet (when you post a tweet, either via Homey or any other twitter app)
 
 *Actions*
 * Send a tweet

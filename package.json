@@ -1,6 +1,6 @@
 {
   "name": "homeytwitter",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Adds Twitter support to your Homey!",
   "main": "app.js",
   "dependencies": {

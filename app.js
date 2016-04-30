@@ -10,7 +10,7 @@ var requestToken
 var accessToken
 
 // Keep track of the stream object so we can close it when the user logs out
-var userMentionStream
+var userStream
 
 function init () {
   Homey.log('init()')
@@ -46,7 +46,7 @@ function initTwitter () {
 
   // ---------- SETUP STREAM CONNECTION TO TWITTER --------------
   // Setup a stream to trigger on
-  userMentionStream = new Stream({
+  userStream = new Stream({
     consumer_key: Homey.env.CLIENT_ID,
     consumer_secret: Homey.env.CLIENT_SECRET,
     access_token_key: settings.access_token,
@@ -62,31 +62,44 @@ function initTwitter () {
 
   // Triggers (use stream to twitter)
   // -- User mentions
-  userMentionStream.stream({
+  userStream.stream({
     track: settings.username
   })
 
   // Listen stream data
-  userMentionStream.on('data', function (tweet) {
+  userStream.on('data', function (tweet) {
     console.log('Got a stream message:')
     if (tweet.text && tweet.user.name) {
       console.log(tweet.text, 'by', tweet.user.name, '(', tweet.user.screen_name, ')')
-      // Check if the user was really mentioned
-      var userMentioned = false
-
-      if (tweet.entities.user_mentions) {
-        tweet.entities.user_mentions.forEach(function (user) {
-          if (user.screen_name === settings.username) {
-            userMentioned = true
-          }
+      // Check if the user wrote a new tweet
+      if (tweet.user.screen_name === settings.username) {
+        Homey.manager('flow').trigger('on_new_own_tweet', {
+          tweet: tweet.text
         })
-      }
+      } else {
+        // Check if the user was really mentioned
+        var userMentioned = false
 
-      if (userMentioned) {
-        Homey.manager('flow').trigger('on_user_mention', {
-          tweet: tweet.text,
-          sender: tweet.user.name
-        })
+        if (tweet.entities.user_mentions) {
+          tweet.entities.user_mentions.forEach(function (user) {
+            if (user.screen_name === settings.username) {
+              userMentioned = true
+            }
+          })
+        }
+
+        if (userMentioned) {
+          Homey.manager('flow').trigger('on_user_mention', {
+            tweet: tweet.text,
+            sender: tweet.user.name
+          })
+        } else {
+          // Someone the user is following posted a tweet
+          Homey.manager('flow').trigger('on_new_timeline_tweet', {
+            tweet: tweet.text,
+            sender: tweet.user.name
+          })
+        }
       }
     }
   })
@@ -309,7 +322,7 @@ module.exports.getAccessToken = getAccessToken
 
 function logout (callback) {
   // Clean up streams and triggers
-  userMentionStream.destroy()
+  userStream.destroy()
 
   // Remove listeners
   // UNCOMMENT @ FW UPDATE: Homey.manager('flow').removeAllListeners('action.post_tweet')

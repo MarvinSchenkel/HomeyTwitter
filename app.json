@@ -12,7 +12,7 @@
         "large":"./assets/images/large.jpg",
         "small":"./assets/images/small.jpg"
     },
-    "version": "0.0.2",
+    "version": "0.0.3",
     "compatibility": "0.x || 1.x",
     "category": [
         "internet"
@@ -76,9 +76,9 @@
                 {
                     "name":"tweet",
                     "title": {
-                    "en":"Tweet",
-                    "nl":"Tweet"
-                    },
+                        "en":"Tweet",
+                        "nl":"Tweet"
+                     },
                     "example":{
                     "en":"@MarvinSchenkel knows how to build a Twitter app ;-)",
                     "nl":"@MarvinSchenkel knows how to build a Twitter app ;-)"
@@ -94,9 +94,60 @@
                         "en":"@MarvinSchenkel",
                         "nl":"@MarvinSchenkel"
                     }
+                }
+                ]
+            },
+            {
+                "id":"on_new_own_tweet",
+                "title": {
+                "en":"You have posted a new tweet!",          
+                "nl":"Je hebt een tweet gepost!"
+                },
+                "tokens":[
+                {
+                    "name":"tweet",
+                    "title": {
+                        "en":"Tweet",
+                        "nl":"Tweet"
+                     },
+                    "example":{
+                    "en":"@MarvinSchenkel knows how to build a Twitter app ;-)",
+                    "nl":"@MarvinSchenkel knows how to build a Twitter app ;-)"
+                    }
+                }
+                ]
+            },
+            {
+                "id":"on_new_timeline_tweet",
+                "title": {
+                "en":"Someone you follow posted a tweet!",          
+                "nl":"Iemand die jij volgt postte een nieuwe tweet!"
+                },
+                "tokens":[
+                {
+                    "name":"tweet",
+                    "title": {
+                        "en":"Tweet",
+                        "nl":"Tweet"
+                     },
+                    "example":{
+                    "en":"@MarvinSchenkel knows how to build a Twitter app ;-)",
+                    "nl":"@MarvinSchenkel knows how to build a Twitter app ;-)"
+                    }
+                },
+                {
+                    "name":"sender",
+                    "title": {
+                    "en":"Sender",
+                    "nl":"Afzender"
+                    },
+                    "example":{
+                        "en":"@MarvinSchenkel",
+                        "nl":"@MarvinSchenkel"
+                    }
+                }
+                ]
             }
-        ]
-      }
         ]
     }
 }
