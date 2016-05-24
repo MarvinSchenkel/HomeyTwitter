@@ -109,7 +109,7 @@ function initTwitter () {
     console.log('speech triggered', speech)
     // Check if the user is logged in
     if (!accessToken) {
-      Homey.manager('speech-output').say(__('talkback.not_connected_yet'))
+      speech.say(__('talkback.not_connected_yet'))
     } else {
       // Init speech triggers
       speech.triggers.some(function (trigger) {
@@ -138,7 +138,7 @@ function initTwitter () {
               }
 
               body.forEach(function (tweet) {
-                Homey.manager('speech-output').say(__('talkback.user') + ' ' + tweet.user.name + ' ' + __('talkback.tweets') + ' ' + tweet.text)
+                speech.say(__('talkback.user') + ' ' + tweet.user.name + ' ' + __('talkback.tweets') + ' ' + tweet.text)
               })
             })
 
@@ -146,26 +146,26 @@ function initTwitter () {
 
           case 'post_tweet' :
             // Ask the user what he wants to tweet
-            Homey.manager('speech-input').ask(__('question.tweet_content'), function (err, result) {
+            speech.ask(__('question.tweet_content'), function (err, result) {
               if (err) {
-                Homey.manager('speech-output').say(__('error.general') + ' ' + err)
+                speech.say(__('error.general') + ' ' + err)
               } else {
                 var tweetToPost = result
                 // Confirm whether we're posting the right tweet
-                Homey.manager('speech-input').confirm(__('question.tweet_post_confirm') + ' ' + tweetToPost, function (err, confirmed) {
+                speech.confirm(__('question.tweet_post_confirm') + ' ' + tweetToPost, function (err, confirmed) {
                   if (err) {
-                    Homey.manager('speech-output').say(__('error.general') + ' ' + err)
+                    speech.say(__('error.general') + ' ' + err)
                   } else if (confirmed) {
                     // Call Twitter to post the tweet
                     postTweet(oauth, accessToken, tweetToPost, function (err, result) {
                       if (err) {
-                        Homey.manager('speech-output').say(__('error.general') + ' ' + err)
+                        speech.say(__('error.general') + ' ' + err)
                       } else {
-                        Homey.manager('speech-output').say(__('talkback.tweet_post_succeeded'))
+                        speech.say(__('talkback.tweet_post_succeeded'))
                       }
                     })
                   } else {
-                    Homey.manager('speech-output').say(__('talkback.tweet_post_canceled'))
+                    speech.say(__('talkback.tweet_post_canceled'))
                   }
                 })
               }
