@@ -66,6 +66,12 @@ function initTwitter () {
     track: settings.username
   })
 
+  // Capture errors
+  userStream.on('error', function (error) {
+    // Usually timeout errors, just log to console to prevent app from crashing
+    console.log(error)
+  })
+
   // Listen stream data
   userStream.on('data', function (tweet) {
     console.log('Got a stream message:')
