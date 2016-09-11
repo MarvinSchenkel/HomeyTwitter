@@ -23,5 +23,3 @@ NL:
 
 *Actions*
 * Send a tweet
-
-TODO: In a future firmware update it will be possible to create dynamic flow triggers. I will then implement the feature where you can trigger on a pre-defined hashtag (#homeyisawesome, #twitterforhomey etc..)
