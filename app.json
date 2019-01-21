@@ -12,11 +12,19 @@
         "large":"./assets/images/large.jpg",
         "small":"./assets/images/small.jpg"
     },
-    "version": "1.0.0",
+    "version": "1.1.0",
     "compatibility": "1.x >=1.5.0",
     "category": [
         "internet"
-    ],
+    ]
+    ,  
+  "contributing": {
+    "donate": {
+        "paypal": {
+            "username": "MSchenkel91"
+        }
+    }
+  },    
     "author": {
         "name": "Marvin Schenkel",
         "email": "marvinschenkel@gmail.com",
