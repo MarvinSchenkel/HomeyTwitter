@@ -13,7 +13,7 @@
         "small":"./assets/images/small.jpg"
     },
     "version": "1.0.0",
-    "compatibility": "0.x || 1.x",
+    "compatibility": "1.x >=1.5.0",
     "category": [
         "internet"
     ],
